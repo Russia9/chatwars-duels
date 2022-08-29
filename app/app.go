@@ -21,7 +21,7 @@ func Init(bot *telebot.Bot, chat *telebot.Chat, consumer *kafka.Consumer) error 
 		Consumer: consumer,
 	}
 
-	err := consumer.SubscribeTopics([]string{"cw2-duels"}, nil)
+	err := consumer.SubscribeTopics([]string{"cw3-duels"}, nil)
 	if err != nil {
 		return err
 	}
