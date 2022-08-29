@@ -18,13 +18,13 @@ func (a *App) Sender(channel chan messages.DuelMessage) {
 			message.Loser.Tag = "[" + message.Loser.Tag + "]"
 		}
 
-		msgString := "Победитель: " +
+		msgString := "Winner: " +
 			message.Winner.Castle +
 			message.Winner.Tag +
 			message.Winner.Name +
 			" 🏅" + strconv.Itoa(message.Winner.Level) +
 			" ❤" + strconv.Itoa(message.Winner.Health) + " \n" +
-			"Проигравший: " +
+			"Loser: " +
 			message.Loser.Castle +
 			message.Loser.Tag +
 			message.Loser.Name +
@@ -32,11 +32,11 @@ func (a *App) Sender(channel chan messages.DuelMessage) {
 			" ❤" + strconv.Itoa(message.Loser.Health)
 
 		if message.IsChallenge {
-			msgString += "\n" + "<b>Дружеская дуэль</b>"
+			msgString += "\n" + "<b>Friendly Duel</b>"
 		}
 
 		if message.IsGuildDuel {
-			msgString += "\n" + "<b>Гильдейская дуэль</b>"
+			msgString += "\n" + "<b>Guild Duel</b>"
 		}
 
 		_, err := a.Bot.Send(a.Chat, msgString, telebot.ModeHTML)
